@@ -11,7 +11,8 @@ app = Flask(__name__)
 # function below
 @app.route('/')
 def home():
-    return "<h1>Welcome to the image classifier app!</h1>"
+    # return "<h1>Welcome to the image classifier app!</h1>"
+    return render_template("index.html")
 
 # First, notice that @app.route() means whenver a web request comes in 
 # for this specific URL path, run the function right below this line.
@@ -29,8 +30,16 @@ def home():
 # https://.../predict with some sort of data.
 @app.route("/predict", methods=["POST"])
 def predict():
-    return jsonify({"prediction": "cat"})
+    # return jsonify({"prediction": "cat"})
+    if "image" not in request.files:
+        return "No image uploaded!", 400
+    file = request.files["image"]
 
+# More explanation on predict():
+# -> request is an object Flask provides to access all incoming data
+# -> from a client's request. request.files is a dictionary
+# -> *Note that we use specifically image because the form is called
+# -> image
 
 if __name__ == '__main__':
     app.run(debug=True)
