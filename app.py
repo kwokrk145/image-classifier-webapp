@@ -34,6 +34,7 @@ def predict():
     if "image" not in request.files:
         return "No image uploaded!", 400
     file = request.files["image"]
+    return f"Received file: {file.filename}"
 
 # More explanation on predict():
 # -> request is an object Flask provides to access all incoming data
