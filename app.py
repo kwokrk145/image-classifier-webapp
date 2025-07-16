@@ -2,7 +2,19 @@
 # request -> access incoming data
 # jsonify -> send JSON responses back to client
 # render_template -> load and display HTML files 
+# PIL -> Python Imaging Librray 
+# -> a tool for opening, manipulating, and saving different file formats
+# io -> provides tools for handling streams of data in memory
+# -> you could read image data directly or convert raw bytes into a 
+# -> PIL Image without saving it as a file
 from flask import Flask, request, jsonify, render_template
+import numpy as np
+from PIL import Image
+import io
+import joblib
+
+# Load the model from joblib
+model = joblib.load("digits_model.pkl")
 
 # Creates Flask object, __name__ tells Flask where my app is located
 app = Flask(__name__) 
@@ -32,9 +44,39 @@ def home():
 def predict():
     # return jsonify({"prediction": "cat"})
     if "image" not in request.files:
-        return "No image uploaded!", 400
+        return "No image uploaded!", 400 # HTTP Status Code if fails
+    
     file = request.files["image"]
-    return f"Received file: {file.filename}"
+
+    # Convert image to 8x8 grayscale and flatten
+    # Image.open(file) opens the file, .convert("L") converts it to
+    # grayscale mode, L stands for luminance. Then, .resize((8,8))
+    # resizes the image to 8x8 pixels
+    img = Image.open(file).convert("L").resize((8,8))
+
+    # coverts the file into a NumPy array for easier handling
+    img_arr = np.array(img)
+    
+    # Our training dataset ranges from 0-16 but the numpy pixels range
+    # from 0-255, so we need to scale it down, which is why we divide.
+    # But in our model 0 is white and 16 is black but our image is
+    # designed to be the opposite way, which is why we subtract. 
+    img_arr = 16 - (img_arr / 16)
+
+    # .flatten() turns the 8x8 array into a 1D array with 64 values
+    # reshape(1, -1) means make it 1 row and then the -1 means however 
+    # many columns needed to satisfy the 1 row, so basically automatic
+    # This is one sample point with automatic features (explanation below)
+    img_flattened = img_arr.flatten().reshape(1, -1)
+
+    # Now, that we have the array, we can predict
+    # In machine learning, most models expect the input to be a 2D array
+    # with this shape:
+    # (number_of_samples, number_of_features). Each row is one sample, or
+    # each list in this 2D array is one sample point and each column or feature
+    # is how many columns in every sample point. 
+    prediction = model.predict(img_flattened)[0]
+    return f"The prediction is: {int(prediction)}"
 
 # More explanation on predict():
 # -> request is an object Flask provides to access all incoming data
