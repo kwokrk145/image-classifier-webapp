@@ -1,24 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head><title>Prediction Result</title></head>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Prediction Result</title>
+    </head>
     <style>
         body, h1, a {
             text-align: center;
+            align-items: center;
+        }
+        #head {
+            background-color: lightblue;
+            width: fit-content;
+            padding: 10px 60px;
+            margin: auto;
+            border: 2px solid black;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            margin-top: 30px;
         }
         .button-link {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 10px 40px;
+            color: black;
             text-decoration: none;
             border-radius: 6px;
             text-align: center;
             border: 2px solid black;
         }
+
+        .button-link:hover {
+            background-color: lightgray;
+        }
     </style>
     <body>
-        <h1>Prediction: {{ prediction }}</h1>
-        <a href="/" class="button-link">Try Another Image</a>
+        <div id="head">
+            <h1>Your Prediction Is: {{ prediction }}</h1>
+        </div>
+        <a href="/" class="button-link">Try Another Image!</a>
     </body>
 </html>
 
