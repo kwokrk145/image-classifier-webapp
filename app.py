@@ -76,7 +76,9 @@ def predict():
     # each list in this 2D array is one sample point and each column or feature
     # is how many columns in every sample point. 
     prediction = model.predict(img_flattened)[0]
-    return f"The prediction is: {int(prediction)}"
+
+    # Pass prediction to HTML template
+    return render_template('results.html', prediction=prediction)
 
 # More explanation on predict():
 # -> request is an object Flask provides to access all incoming data

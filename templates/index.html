@@ -2,9 +2,14 @@
 <html>
     <head>
         <title>Upload Image</title>
+        <style>
+            body, h1 {
+                text-align: center
+            }
+        </style>
     </head>
     <body>
-        <h1>Upload an image for prediction</h1>
+        <h1>Upload an Image For Prediction</h1>
         <form action="/predict" method="POST" enctype="multipart/form-data">
             <input type="file" name="image" accept="image/*" required>
             <button type="submit">Upload and Predict</button>
