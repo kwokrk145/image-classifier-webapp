@@ -17,8 +17,8 @@ digits = load_digits()
 # digits.target is the correct digit labels for each row
 X, y = digits.data, digits.target
 
-# Essentially what we are doing here is teaching the model to recognize patterns.
-# test_size = 0.2 means 20% of the data is used for testing,
+# Essentially what we are doing here is teaching the model to recognize 
+# patterns. test_size = 0.2 means 20% of the data is used for testing,
 # so 80% is used for training the model.
 
 # X_train and y_train come from 80% of digits.data and digits.target.
@@ -29,8 +29,9 @@ X, y = digits.data, digits.target
 # After training, we test the model using X_test and y_test.
 # -> X_test contains new, unseen digit images.
 # -> y_test contains the correct answers for those test images.
-# We use X_test to see if the model can correctly predict digits it hasn't seen before,
-# and we compare its predictions to y_test to measure how well it learned.
+# We use X_test to see if the model can correctly predict digits it 
+# # hasn't seen before, and we compare its predictions to y_test to 
+# measure how well it learned.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Now we create the actual random forest object:
