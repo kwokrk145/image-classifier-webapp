@@ -5,14 +5,32 @@
         body, h1, a {
             text-align: center;
         }
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            border: 2px solid black;
+        }
     </style>
     <body>
         <h1>Prediction: {{ prediction }}</h1>
-        <a href="/">Click here to try another image</a>
+        <a href="/" class="button-link">Try Another Image</a>
     </body>
 </html>
 
 <!--
 <a href="/">Try another image</a>
 Clicking it sends the user back to the main upload form (/ route).
+The .button-link class styles an <a> tag to look like a button:
+display: inline-block makes the link behave like a block element while 
+staying inline, allowing padding and width control.
+padding: 10px 20px adds space inside the button (10px top/bottom, 20px left/right) 
+to make it look like a real button.
+color: white makes the text inside the button white for contrast.
+text-decoration: none removes the underline that <a> tags normally have.
+border-radius: 6px rounds the corners of the button.
 -->
