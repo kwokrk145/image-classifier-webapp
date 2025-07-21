@@ -2,48 +2,32 @@
 <html lang="en-us">
     <head>
         <meta charset="UTF-8" />
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Upload Image</title>
-        <style>
-            body {
-                    text-align: center;             
-                }
-            .box {
-                border-radius: 6px;
-                background-color: lightblue;
-                width: fit-content;
-                margin: 20px auto;
-                padding: 30px 20px; 
-                border: 2px solid black;
-                margin-bottom: 30px;
-                margin-top: 30px;
-            }
-
-            #instructions {
-                border: 2px solid black;
-                margin: 20px auto;
-                width: fit-content;
-                padding: 20px 20px;
-                margin-top: 30px;
-            }
-
-        </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     </head>
     <body>
-        <div class="box">
-            <h1>Welcome to the Image Classifier!</h1>
-        </div>
-        <form action="/predict" method="POST" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" required>
-            <button type="submit">Upload and Predict</button>
-        </form>
+        <main id="app">
+            <div class="box">
+                <h1>Welcome to the Image Classifier!</h1>
+            </div>
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+                <div class="upload-group">
+                    <input type="file" name="image" accept="image/*" required>
+                    <!-- <div id="file-name" class="file-name"></div> -->
+                    <button type="submit">Upload and Predict</button>
+                </div>
+            </form>
 
-        <div id="instructions">
-            <p>
-                <strong>Instructions:</strong> Upload a digit image (0-9) and click the button to see the prediction.
-            </p>
 
-        </div>
-
+            <div id="instructions">
+                <p>
+                    <strong>Instructions:</strong> Upload a picture to see a prediction!
+                </p>
+            </div>
+        </main>
+        
+        <script src="{{ url_for('static', filename='web_handling.js') }}"></script>
     </body>
 </html>

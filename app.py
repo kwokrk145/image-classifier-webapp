@@ -11,7 +11,7 @@ from torchvision import models, transforms
 # model.eval() puts the model in inference mode so it behaves correctly
 # when predicting. Just make sure to run this when predicting since we
 # aren't training right now.
-model = models.resnet18(pretrained=True)
+model = models.resnet18(weights=True)
 model.eval()
 
 # Creates Flask object, __name__ tells Flask where my app is located
@@ -39,7 +39,6 @@ transform = transforms.Compose([
         std=[0.229, 0.224, 0.225]
     )
 ])
-
 
 # app.route("/") means when the user visits the homepage url, run the
 # function below

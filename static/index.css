@@ -1,0 +1,39 @@
+
+.box {
+    border-radius: 6px;
+    background: linear-gradient(turquoise,#8462bd);
+    width: fit-content;
+    margin: 20px auto;
+    padding: 30px 20px; 
+    border: 2px solid black;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#instructions {
+    background: white;
+    border: 2px solid black;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 30px 40px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 412px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.upload-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px;
+    text-align: left;
+}
