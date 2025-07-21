@@ -1,0 +1,29 @@
+body, h1, a {
+            text-align: center;
+            align-items: center;
+            max-width: 412px;
+            margin: auto;
+}
+#head {
+    background: linear-gradient(turquoise,#8462bd);
+    width: fit-content;
+    padding: 30px 60px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.button-link {
+    display: inline-block;
+    padding: 10px 40px;
+    color: black;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.button-link:hover {
+    background-color: lightgray;
+}
