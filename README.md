@@ -47,10 +47,6 @@ A full-stack machine learning web application for real-time image classification
 5. **Open your browser:**  
    Navigate to `http://localhost:5000` and upload an image to get instant predictions.
 
-## Demo
-
-![Demo Screenshot](demo.png)
-
 ## Code Highlights
 
 - [app.py](app.py): Flask app for ResNet-18 predictions ([`predict`](app.py))
